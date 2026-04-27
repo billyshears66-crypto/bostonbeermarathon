@@ -78,8 +78,8 @@
 
     .route-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 4rem 2.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5rem 3.5rem;
       align-items: start;
       position: relative;
     }
@@ -140,7 +140,7 @@
     }
 
     .stop img {
-      max-width: 230px;
+      max-width: 300px;
       width: 100%;
       display: block;
       margin: 0 auto 0.75rem;
@@ -218,10 +218,7 @@
         top: 0;
       }
 
-      .stop::after,
-      .stop.connect-right::after,
-      .stop.connect-left::after,
-      .stop.connect-down::after {
+      .stop::after {display: none;} {
         width: 0;
         height: calc(100% + 3rem);
         border-top: 0;
