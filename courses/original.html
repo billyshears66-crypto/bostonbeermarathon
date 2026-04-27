@@ -77,12 +77,18 @@
     }
 
     .route-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 5rem 3.5rem;
-      align-items: start;
-      position: relative;
-    }
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding: 2rem 1rem 3rem;
+  scroll-snap-type: x mandatory;
+}
+
+.stop {
+  flex: 0 0 260px;
+  scroll-snap-align: center;
+}
 
     .route-row {
       display: contents;
