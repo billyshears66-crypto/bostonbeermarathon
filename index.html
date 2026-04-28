@@ -6,123 +6,490 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    body {
-      margin: 0;
-      padding: 2rem 1rem;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, Helvetica, Arial, sans-serif;
-      background: #ffffff;
-      color: #111;
-      text-align: center;
+    :root {
+      --green: #073f25;
+      --green-deep: #042d1d;
+      --cream: #fff6dc;
+      --tan: #ead7a2;
+      --gold: #f3c760;
+      --brick: #b85632;
+      --ink: #102015;
     }
 
-    img {
-      max-width: 420px;
-      width: 100%;
-      margin-bottom: 2rem;
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--green-deep);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 246, 220, 0.08), transparent 25rem),
+        radial-gradient(circle at 82% 62%, rgba(184, 86, 50, 0.14), transparent 27rem),
+        linear-gradient(180deg, var(--green) 0%, #063a23 60%, var(--green-deep) 100%);
+      color: var(--cream);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      min-height: 92vh;
+      padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem) 0;
+    }
+
+    .hero-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+      align-items: center;
+      gap: clamp(2rem, 6vw, 5rem);
+      padding: clamp(1.5rem, 5vh, 3.5rem) 0 3rem;
+    }
+
+    .logo-lockup {
+      width: min(1180px, 100%);
+      display: block;
+      margin: 0 auto clamp(1.75rem, 4vw, 3rem);
+      filter: drop-shadow(0 24px 22px rgba(0, 0, 0, 0.26));
     }
 
     h1 {
-      margin-bottom: 0.5rem;
+      margin: 1.2rem 0 0;
+      font-size: clamp(3rem, 7vw, 6.6rem);
+      line-height: 0.9;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
 
-    h2 {
-      margin-top: 3rem;
+    .tagline {
+      margin: 1.2rem 0 0;
+      color: var(--tan);
+      font-size: clamp(1.15rem, 2vw, 1.55rem);
+      font-weight: 850;
     }
 
-    p {
-      max-width: 700px;
-      margin: 1rem auto;
-      line-height: 1.6;
+    .intro {
+      margin: 1.2rem 0 0;
+      max-width: 37rem;
+      color: var(--cream);
+      font-size: 1.05rem;
+      line-height: 1.65;
     }
 
-    .section {
-      margin-top: 2rem;
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.6rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.85rem 1.15rem;
+      border: 1px solid rgba(255, 246, 220, 0.34);
+      border-radius: 999px;
+      color: var(--cream);
+      font-weight: 950;
+      text-decoration: none;
+      box-shadow: 0 14px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .button.primary {
+      background: var(--cream);
+      color: var(--green);
+      border-color: var(--cream);
+    }
+
+    .button:hover {
+      background: var(--tan);
+      border-color: var(--tan);
+      color: var(--green);
+    }
+
+    .course-preview {
+      position: relative;
+      min-height: 520px;
+      isolation: isolate;
+    }
+
+    .course-preview::before {
+      content: "";
+      position: absolute;
+      inset: 6% 3% 8%;
+      z-index: -1;
+      border: 1px solid rgba(255, 246, 220, 0.14);
+      border-radius: 8px;
+      background: rgba(4, 45, 29, 0.22);
+    }
+
+    .preview-route {
+      position: absolute;
+      left: 7%;
+      right: 7%;
+      top: 36%;
+      height: 120px;
+      pointer-events: none;
+    }
+
+    .preview-route path {
+      fill: none;
+      stroke: var(--tan);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 2 22;
+      filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.18));
+    }
+
+    .preview-stop {
+      position: absolute;
+      width: min(34%, 220px);
+      object-fit: contain;
+      filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.32));
+    }
+
+    .preview-stop.one {
+      left: 2%;
+      top: 10%;
+    }
+
+    .preview-stop.two {
+      right: 3%;
+      top: 0;
+      width: min(31%, 205px);
+    }
+
+    .preview-stop.three {
+      left: 32%;
+      bottom: 0;
+      width: min(38%, 250px);
+    }
+
+    .marker {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--cream);
+      color: var(--green);
+      font-weight: 950;
+      z-index: 3;
+      box-shadow:
+        0 0 0 6px rgba(7, 63, 37, 0.94),
+        0 0 0 8px rgba(255, 246, 220, 0.16);
+    }
+
+    .marker.one {
+      left: 14%;
+      top: 45%;
+    }
+
+    .marker.two {
+      left: 48%;
+      top: 48%;
+    }
+
+    .marker.three {
+      right: 14%;
+      top: 47%;
+    }
+
+    .quick-rules {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255, 246, 220, 0.18);
+      border-top: 1px solid rgba(255, 246, 220, 0.18);
+      border-bottom: 1px solid rgba(255, 246, 220, 0.18);
+    }
+
+    .rule {
+      padding: clamp(1.4rem, 4vw, 2.5rem);
+      background: rgba(4, 45, 29, 0.44);
+    }
+
+    .rule h2 {
+      margin: 0 0 0.65rem;
+      color: var(--gold);
+      font-size: 0.86rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .rule p {
+      margin: 0;
+      line-height: 1.55;
+      max-width: 32rem;
     }
 
     .courses {
-      margin-top: 2rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: clamp(3rem, 8vw, 5.5rem) 0;
     }
 
-    .course-link {
-      display: block;
-      margin: 0.5rem 0;
-      font-weight: 600;
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      line-height: 0.95;
+    }
+
+    .section-heading p {
+      margin: 0;
+      max-width: 28rem;
+      color: var(--tan);
+      line-height: 1.5;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .course-card {
+      position: relative;
+      min-height: 330px;
+      display: grid;
+      align-content: end;
+      overflow: hidden;
+      padding: 1.3rem;
+      border: 1px solid rgba(255, 246, 220, 0.18);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(7, 63, 37, 0.2), rgba(4, 45, 29, 0.88)),
+        rgba(4, 45, 29, 0.54);
       text-decoration: none;
-      color: #0a5c36;
     }
 
-    .course-link:hover {
-      text-decoration: underline;
+    .course-card img {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: min(48%, 260px);
+      max-height: 190px;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.34));
+    }
+
+    .course-card::before {
+      content: "";
+      position: absolute;
+      left: 1.3rem;
+      right: 1.3rem;
+      top: 45%;
+      border-top: 7px dotted var(--tan);
+      opacity: 0.86;
+    }
+
+    .course-card h3 {
+      position: relative;
+      margin: 0 0 0.55rem;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1;
+    }
+
+    .course-card p {
+      position: relative;
+      margin: 0;
+      max-width: 26rem;
+      color: var(--tan);
+      line-height: 1.5;
+    }
+
+    .course-card:hover {
+      border-color: rgba(255, 246, 220, 0.42);
+      transform: translateY(-2px);
     }
 
     footer {
-      margin-top: 4rem;
-      font-size: 0.85rem;
-      color: #666;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      border-top: 1px solid rgba(255, 246, 220, 0.28);
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--tan);
+      padding: 1.25rem 1rem 3rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        min-height: 0;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .course-preview {
+        min-height: 360px;
+      }
+
+      .quick-rules,
+      .course-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading p {
+        margin-top: 0.8rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding-inline: 1rem;
+      }
+
+      .course-preview {
+        min-height: 310px;
+      }
+
+      .preview-stop {
+        width: 46%;
+      }
+
+      .course-card {
+        min-height: 300px;
+      }
+
+      .course-card img {
+        width: 58%;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div class="page">
+    <section class="hero">
+      <img class="logo-lockup" src="BBM Logo.png" alt="Boston Beer Marathon logo" />
 
-  <img src="BBM Logo.png" alt="Boston Beer Marathon logo" />
+      <div class="hero-inner">
+        <div>
+          <h1>Boston Beer Marathon</h1>
+          <p class="tagline">Drink. Run. Repeat.</p>
+          <p class="intro">
+            A self-organized, non-sanctioned running route through Boston bars.
+            Part running tour, part bar crawl, entirely optional.
+          </p>
 
-  <p>
-    The Boston Beer Marathon is a self-organized, non-sanctioned running route
-    through Boston bars.
-  </p>
+          <div class="hero-actions">
+            <a class="button primary" href="/courses/original.html">See the Original Course</a>
+            <a class="button" href="/courses/waterfront.html">Waterfront Course</a>
+          </div>
+        </div>
 
-  <p>
-    It’s part running tour, part bar crawl, and entirely optional.
-  </p>
+        <div class="course-preview" aria-hidden="true">
+          <svg class="preview-route" viewBox="0 0 560 120" preserveAspectRatio="none">
+            <path d="M20 58 C110 20 190 20 280 88 C370 20 450 20 540 58" />
+          </svg>
+          <img class="preview-stop one" src="images/jj-donovans.png" alt="" />
+          <img class="preview-stop two" src="images/cheers.png" alt="" />
+          <img class="preview-stop three" src="images/cask-n-flagon.png" alt="" />
+          <span class="marker one">1</span>
+          <span class="marker two">2</span>
+          <span class="marker three">3</span>
+        </div>
+      </div>
+    </section>
 
-  <p><strong>Drink. Run. Repeat.</strong></p>
+    <section class="quick-rules">
+      <div class="rule">
+        <h2>What It Is</h2>
+        <p>
+          A choose-your-own-distance route through Boston. Run the full course,
+          half, or just meet along the way.
+        </p>
+      </div>
 
-  <div class="section">
-    <h2>What It Is</h2>
-    <p>
-      A choose-your-own-distance route through Boston. Run the full course,
-      half, or just meet along the way. There are no start times, no pacing
-      rules, and no expectations beyond forward progress.
-    </p>
+      <div class="rule">
+        <h2>What It Is Not</h2>
+        <p>
+          Not a race. No registration, no timing, no official organization,
+          and absolutely no promise that tomorrow will be productive.
+        </p>
+      </div>
+
+      <div class="rule">
+        <h2>How It Works</h2>
+        <p>
+          Pick a course. Run between stops. Have a beer or do not. Eat when
+          needed. Hydrate when you remember.
+        </p>
+      </div>
+    </section>
+
+    <main class="courses">
+      <div class="section-heading">
+        <h2>Courses</h2>
+        <p>
+          Two ways through the city, both built for questionable pacing and
+          better stories than splits.
+        </p>
+      </div>
+
+      <div class="course-grid">
+        <a class="course-card" href="/courses/original.html">
+          <img src="images/trillium.png" alt="" />
+          <h3>The Original Course</h3>
+          <p>Ten stops, one finish line, and the route that started the whole bad idea.</p>
+        </a>
+
+        <a class="course-card" href="/courses/waterfront.html">
+          <img src="images/harpoon.png" alt="" />
+          <h3>The Waterfront Course</h3>
+          <p>A harbor-side variation with brewery energy and excellent excuses to linger.</p>
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      Not affiliated with the Boston Athletic Association or any participating
+      bars. Participate at your own risk.
+    </footer>
   </div>
-
-  <div class="section">
-    <h2>What It Is Not</h2>
-    <p>
-      This is not a race. There is no registration, no timing, and no official
-      organization. You are responsible for yourself, your decisions, and your
-      ability to function the next day.
-    </p>
-  </div>
-
-  <div class="section">
-    <h2>How It Works</h2>
-    <p>
-      Pick a course. Show up. Run between stops. Have a beer (or don’t). Eat when
-      needed. Hydrate when you remember. Continue until finished or until you
-      decide you’ve made enough good decisions for one day.
-    </p>
-  </div>
-
-  <div class="section courses">
-    <h2>Courses</h2>
-
-    <a class="course-link" href="/courses/waterfront.html">
-      The Waterfront Course
-    </a>
-
-    <a class="course-link" href="/courses/original.html">
-      The Original Course
-    </a>
-
-  </div>
-
-  <footer>
-    Not affiliated with the Boston Athletic Association or any participating
-    bars. Participate at your own risk.
-  </footer>
-
 </body>
 </html>
