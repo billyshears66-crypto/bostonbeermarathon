@@ -54,24 +54,22 @@
       z-index: 1;
     }
 
-    .masthead {
-      display: flex;
+    .header-layout {
+      display: grid;
+      grid-template-columns: clamp(190px, 23vw, 285px) minmax(0, 1fr);
       align-items: center;
-      justify-content: flex-start;
-      gap: clamp(1.4rem, 3.5vw, 2.75rem);
+      gap: clamp(1.6rem, 4vw, 3rem);
       max-width: 1240px;
       margin: 0 auto;
+    }
+
+    .masthead {
       text-align: left;
     }
 
-    .masthead img {
-      flex: 0 0 auto;
-      width: clamp(190px, 23vw, 285px);
+    .header-logo {
+      width: 100%;
       filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.25));
-    }
-
-    .title-block {
-      min-width: 0;
     }
 
     h1 {
@@ -93,11 +91,11 @@
     nav {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 1rem;
-      max-width: 1120px;
-      margin: 0.95rem auto 0;
-      padding: 0 1rem;
+      max-width: 760px;
+      margin: 1.25rem 0 0;
+      padding: 0;
     }
 
     nav::before,
@@ -121,10 +119,10 @@
     }
 
     .intro {
-      max-width: 780px;
-      margin: 1.8rem auto 0;
-      padding: 0 1rem;
-      text-align: center;
+      max-width: 760px;
+      margin: 1.35rem 0 0;
+      padding: 0;
+      text-align: left;
       line-height: 1.6;
     }
 
@@ -325,18 +323,24 @@
         padding-top: 1.25rem;
       }
 
-      .masthead {
+      .header-layout {
         display: block;
         text-align: center;
       }
 
-      .masthead img {
+      .header-logo {
         width: min(62vw, 210px);
         margin-bottom: 0.85rem;
       }
 
+      .masthead {
+        text-align: center;
+      }
+
       nav {
         flex-wrap: wrap;
+        justify-content: center;
+        margin-inline: auto;
       }
 
       nav::before,
@@ -351,6 +355,12 @@
       .route-board {
         overflow-x: visible;
         margin-top: 1rem;
+      }
+
+      .intro {
+        text-align: center;
+        margin-inline: auto;
+        padding: 0 1rem;
       }
 
       .route-scroll {
@@ -419,30 +429,33 @@
 
 <body>
   <header>
-    <div class="masthead">
-      <img src="/logo.png" alt="Boston Beer Marathon logo" />
-      <div class="title-block">
-        <h1>The Original Course</h1>
-        <div class="tagline">Where bad decisions were born.</div>
+    <div class="header-layout">
+      <img class="header-logo" src="/logo.png" alt="Boston Beer Marathon logo" />
+
+      <div>
+        <div class="masthead">
+          <h1>The Original Course</h1>
+          <div class="tagline">Where bad decisions were born.</div>
+        </div>
+
+        <nav>
+          <a href="/">Home</a>
+          <a href="/courses/waterfront.html">Waterfront Course</a>
+        </nav>
+
+        <section class="intro">
+          <p>
+            The first Boston Beer Marathon route. Ten stops, one finish line,
+            and just enough questionable judgment to turn a dumb idea into a tradition.
+          </p>
+          <p>
+            Run the whole thing, run part of it, or use it as a highly inefficient guide
+            to drinking your way across Boston.
+          </p>
+        </section>
       </div>
     </div>
-
-    <nav>
-      <a href="/">Home</a>
-      <a href="/courses/waterfront.html">Waterfront Course</a>
-    </nav>
   </header>
-
-  <section class="intro">
-    <p>
-      The first Boston Beer Marathon route. Ten stops, one finish line,
-      and just enough questionable judgment to turn a dumb idea into a tradition.
-    </p>
-    <p>
-      Run the whole thing, run part of it, or use it as a highly inefficient guide
-      to drinking your way across Boston.
-    </p>
-  </section>
 
   <main class="route-board" aria-label="Original Boston Beer Marathon course">
     <div class="route-scroll">
@@ -567,14 +580,4 @@
   </main>
 
   <section class="shirt-link">
-    <h2>Original Course Shirt</h2>
-    <p>Course shirt coming soon. Same bad idea, slightly better branding.</p>
-    <a class="button" href="#">Buy the Shirt</a>
-  </section>
-
-  <footer>
-    Not affiliated with the Boston Athletic Association or any participating bars.
-    Participate at your own risk.
-  </footer>
-</body>
-</html>
+    <h2>Original C
