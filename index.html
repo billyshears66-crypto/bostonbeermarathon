@@ -340,6 +340,31 @@
       transform: translateY(-2px);
     }
 
+    .history-callout {
+      margin-top: 1rem;
+      padding: clamp(1.4rem, 4vw, 2rem);
+      border: 1px solid rgba(255, 246, 220, 0.2);
+      border-radius: 8px;
+      background: rgba(4, 45, 29, 0.42);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .history-callout h3 {
+      margin: 0 0 0.45rem;
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      line-height: 1;
+    }
+
+    .history-callout p {
+      margin: 0;
+      color: var(--tan);
+      line-height: 1.5;
+      max-width: 42rem;
+    }
+
     footer {
       width: min(1180px, calc(100% - 2rem));
       margin: 0 auto;
@@ -365,7 +390,8 @@
       }
 
       .quick-rules,
-      .course-grid {
+      .course-grid,
+      .history-callout {
         grid-template-columns: 1fr;
       }
 
@@ -419,6 +445,7 @@
           <div class="hero-actions">
             <a class="button primary" href="/courses/original.html">See the Original Course</a>
             <a class="button" href="/courses/waterfront.html">Waterfront Course</a>
+            <a class="button" href="history.html">How It Started</a>
           </div>
         </div>
 
@@ -484,6 +511,16 @@
           <p>A harbor-side variation with brewery energy and excellent excuses to linger.</p>
         </a>
       </div>
+
+      <section class="history-callout">
+        <div>
+          <h3>How It Started</h3>
+          <p>
+            One video, one bad idea, and the first Original Course run across Boston.
+          </p>
+        </div>
+        <a class="button primary" href="history.html">Read the History</a>
+      </section>
     </main>
 
     <footer>
