@@ -14,7 +14,7 @@
       --tan: #ead7a2;
       --gold: #f3c760;
       --ink: #102015;
-      --route-width: 1780px;
+      --route-width: 1220px;
     }
 
     * {
@@ -57,7 +57,7 @@
 
     .header-layout {
       display: grid;
-      grid-template-columns: clamp(190px, 23vw, 285px) minmax(0, 1fr);
+      grid-template-columns: clamp(260px, 32vw, 430px) minmax(0, 1fr);
       align-items: center;
       gap: clamp(1.6rem, 4vw, 3rem);
       max-width: 1240px;
@@ -154,18 +154,18 @@
     }
 
     .route-scroll {
-      width: var(--route-width);
+      width: min(var(--route-width), calc(100vw - 2rem));
       min-height: 820px;
       position: relative;
       margin: 0 auto;
-      padding: 3rem 3rem 4.5rem;
+      padding: 3rem 1.5rem 4.5rem;
     }
 
     .route-line {
       position: absolute;
       left: 0;
       top: 315px;
-      width: 1656px;
+      width: 1120px;
       height: 180px;
       pointer-events: none;
       overflow: visible;
@@ -183,7 +183,7 @@
     .route-grid {
       position: relative;
       height: 720px;
-      min-width: 1656px;
+      min-width: 1120px;
     }
 
     .stop {
@@ -192,13 +192,13 @@
       position: absolute;
       left: var(--x);
       top: var(--y);
-      width: 230px;
+      width: 160px;
       text-align: left;
     }
 
     .stop-marker {
       position: absolute;
-      left: 72px;
+      left: 50px;
       top: calc(var(--marker-top) - var(--y));
       z-index: 4;
       display: grid;
@@ -215,16 +215,16 @@
     }
 
     .finish-marker {
-      left: 52px;
-      width: 80px;
+      left: 30px;
+      width: 70px;
       border-radius: 999px;
-      font-size: 0.78rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
     }
 
     .stop img {
       width: 100%;
-      max-height: 170px;
+      max-height: 145px;
       object-fit: contain;
       display: block;
       margin: 0 0 0.8rem;
@@ -300,7 +300,7 @@
       padding: 1.25rem 1rem 3rem;
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 1180px) {
       header {
         padding-top: 1.25rem;
       }
@@ -311,7 +311,7 @@
       }
 
       .header-logo {
-        width: min(62vw, 210px);
+        width: min(82vw, 330px);
         margin-bottom: 0.85rem;
       }
 
@@ -466,7 +466,7 @@
           <img src="../images/Sam-Adams.png" alt="Sam Adams" />
         </article>
 
-        <article class="stop below" style="--x: 150px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 105px; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">2</span>
           <img src="../images/Bleacher-Bar.png" alt="Bleacher Bar" />
           <div class="copy">
@@ -476,7 +476,7 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 300px; --y: 36px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 200px; --y: 36px; --marker-top: 375px;">
           <span class="stop-marker">3</span>
           <div class="copy">
             <span class="stop-number">Stop 3</span>
@@ -486,7 +486,7 @@
           <img src="../images/Night-Shift.png" alt="Night Shift Esplanade" />
         </article>
 
-        <article class="stop below" style="--x: 450px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 295px; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">4</span>
           <img src="../images/Pier6.png" alt="Pier 6" />
           <div class="copy">
@@ -496,7 +496,7 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 590px; --y: 20px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 390px; --y: 20px; --marker-top: 375px;">
           <span class="stop-marker">5</span>
           <div class="copy">
             <span class="stop-number">Stop 5</span>
@@ -506,7 +506,7 @@
           <img src="../images/Union-Oyster-House.png" alt="Union Oyster House" />
         </article>
 
-        <article class="stop below" style="--x: 740px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 485px; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">6</span>
           <img src="../images/Lord-Hobo.png" alt="Lord Hobo" />
           <div class="copy">
@@ -516,7 +516,7 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 880px; --y: 34px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 580px; --y: 34px; --marker-top: 375px;">
           <span class="stop-marker">7</span>
           <div class="copy">
             <span class="stop-number">Stop 7</span>
@@ -526,7 +526,7 @@
           <img src="../images/L-Street.png" alt="L Street" />
         </article>
 
-        <article class="stop below" style="--x: 1030px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 675px; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">8</span>
           <img src="../images/BBQ-Smoke-Shop.png" alt="BBQ Smoke Shop" />
           <div class="copy">
@@ -536,7 +536,7 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 1170px; --y: 32px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 770px; --y: 32px; --marker-top: 375px;">
           <span class="stop-marker">9</span>
           <div class="copy">
             <span class="stop-number">Stop 9</span>
@@ -546,7 +546,7 @@
           <img src="../images/Rock-Bottom.png" alt="Rock Bottom" />
         </article>
 
-        <article class="stop below" style="--x: 1320px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 865px; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">10</span>
           <img src="../images/Ward8.png" alt="Ward 8" />
           <div class="copy">
@@ -556,7 +556,7 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 1460px; --y: 24px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 960px; --y: 24px; --marker-top: 375px;">
           <span class="stop-marker finish-marker">Finish</span>
           <div class="copy">
             <span class="stop-number">Finish</span>
