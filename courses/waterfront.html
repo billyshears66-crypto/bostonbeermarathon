@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Waterfront Course | Boston Beer Marathon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --blue: #1f5f9c;
+      --blue-deep: #113c68;
+      --blue-dark: #092944;
+      --cream: #fff6dc;
+      --tan: #ead7a2;
+      --gold: #f3c760;
+      --ink: #102015;
+      --route-width: 1780px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--blue-dark);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255, 246, 220, 0.09), transparent 24rem),
+        radial-gradient(circle at 78% 68%, rgba(243, 199, 96, 0.1), transparent 28rem),
+        linear-gradient(180deg, var(--blue) 0%, var(--blue-deep) 58%, var(--blue-dark) 100%);
+      color: var(--cream);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    header {
+      padding: 0.85rem 1rem 0.55rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-layout {
+      display: grid;
+      grid-template-columns: clamp(190px, 23vw, 285px) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(1.6rem, 4vw, 3rem);
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .masthead {
+      text-align: left;
+    }
+
+    .header-logo {
+      width: 100%;
+      filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.25));
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 6vw, 5.4rem);
+      line-height: 0.95;
+      color: var(--cream);
+      letter-spacing: 0;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.26);
+    }
+
+    .tagline {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      margin-top: 0.55rem;
+      font-style: italic;
+      color: var(--cream);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+      max-width: 760px;
+      margin: 1.25rem 0 0;
+      padding: 0;
+    }
+
+    nav::before,
+    nav::after {
+      content: "";
+      height: 1px;
+      flex: 1 1 160px;
+      background: rgba(255, 246, 220, 0.34);
+    }
+
+    nav a {
+      color: var(--cream);
+      font-size: 0.86rem;
+      font-weight: 850;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      color: var(--tan);
+    }
+
+    .intro {
+      max-width: 760px;
+      margin: 1.35rem 0 0;
+      padding: 0;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    .intro p {
+      margin: 0 0 1.1rem;
+    }
+
+    .route-board {
+      margin: 2rem 0 4rem;
+      padding-bottom: 2rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-color: var(--tan) rgba(255, 255, 255, 0.08);
+      scrollbar-width: thin;
+    }
+
+    .route-board::-webkit-scrollbar {
+      height: 12px;
+    }
+
+    .route-board::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .route-board::-webkit-scrollbar-thumb {
+      background: var(--tan);
+      border-radius: 999px;
+    }
+
+    .route-scroll {
+      width: var(--route-width);
+      min-height: 820px;
+      position: relative;
+      margin: 0 auto;
+      padding: 3rem 3rem 4.5rem;
+    }
+
+    .route-line {
+      position: absolute;
+      left: 0;
+      top: 315px;
+      width: 1656px;
+      height: 180px;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .route-line path {
+      fill: none;
+      stroke: var(--tan);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 2 24;
+      filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.2));
+    }
+
+    .route-grid {
+      position: relative;
+      height: 720px;
+      min-width: 1656px;
+    }
+
+    .stop {
+      --x: 0px;
+      --y: 0px;
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 230px;
+      text-align: left;
+    }
+
+    .stop-marker {
+      position: absolute;
+      left: 72px;
+      top: calc(var(--marker-top) - var(--y));
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--cream);
+      color: var(--blue-deep);
+      font-weight: 950;
+      box-shadow:
+        0 0 0 6px rgba(17, 60, 104, 0.95),
+        0 0 0 8px rgba(255, 246, 220, 0.16);
+    }
+
+    .finish-marker {
+      left: 52px;
+      width: 80px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .stop img {
+      width: 100%;
+      max-height: 170px;
+      object-fit: contain;
+      display: block;
+      margin: 0 0 0.8rem;
+      filter: drop-shadow(0 16px 16px rgba(0, 0, 0, 0.34));
+      transition: transform 0.18s ease, filter 0.18s ease;
+    }
+
+    .stop:hover img {
+      transform: translateY(-4px) scale(1.025);
+      filter: drop-shadow(0 22px 18px rgba(0, 0, 0, 0.42));
+    }
+
+    .stop-number {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .stop h2 {
+      margin: 0 0 0.35rem;
+      color: var(--cream);
+      font-size: 1.35rem;
+      line-height: 1.05;
+    }
+
+    .stop p {
+      margin: 0;
+      color: var(--cream);
+      font-size: 0.95rem;
+      line-height: 1.4;
+      text-wrap: pretty;
+    }
+
+    .stop.above .copy {
+      margin-bottom: 0.95rem;
+    }
+
+    .stop.below .copy {
+      margin-top: 0.95rem;
+    }
+
+    .course-note {
+      max-width: 760px;
+      margin: 3rem auto 4rem;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .course-note h2 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+    }
+
+    .course-note p {
+      margin: 0 auto;
+      max-width: 36rem;
+      color: var(--tan);
+      line-height: 1.55;
+    }
+
+    footer {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      border-top: 1px solid rgba(255, 246, 220, 0.28);
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--tan);
+      padding: 1.25rem 1rem 3rem;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding-top: 1.25rem;
+      }
+
+      .header-layout {
+        display: block;
+        text-align: center;
+      }
+
+      .header-logo {
+        width: min(62vw, 210px);
+        margin-bottom: 0.85rem;
+      }
+
+      .masthead {
+        text-align: center;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-inline: auto;
+      }
+
+      nav::before,
+      nav::after {
+        flex-basis: 100%;
+      }
+
+      nav::after {
+        display: none;
+      }
+
+      .intro {
+        text-align: center;
+        margin-inline: auto;
+        padding: 0 1rem;
+      }
+
+      .route-board {
+        overflow-x: visible;
+        margin-top: 1rem;
+      }
+
+      .route-scroll {
+        width: 100%;
+        min-height: 0;
+        padding: 1.25rem 1rem 2rem;
+      }
+
+      .route-line {
+        left: 31px;
+        right: auto;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        height: auto;
+        background: repeating-linear-gradient(
+          to bottom,
+          var(--tan) 0 4px,
+          transparent 4px 15px
+        );
+      }
+
+      .route-line svg {
+        display: none;
+      }
+
+      .route-grid {
+        height: auto;
+        min-width: 0;
+      }
+
+      .stop,
+      .stop.above,
+      .stop.below {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: min(100%, 440px);
+        min-height: 0;
+        margin: 0 auto 2.75rem;
+        padding-left: 4.2rem;
+      }
+
+      .stop-marker,
+      .stop:nth-of-type(even) .stop-marker {
+        left: 12px;
+        top: 0.15rem;
+        width: 38px;
+        height: 38px;
+        box-shadow:
+          0 0 0 5px var(--blue-deep),
+          0 0 0 7px rgba(255, 246, 220, 0.16);
+      }
+
+      .finish-marker {
+        left: 0;
+        width: 62px;
+        font-size: 0.68rem;
+      }
+
+      .stop img {
+        width: min(100%, 260px);
+        max-height: 160px;
+      }
+
+      .stop.above .copy,
+      .stop.below .copy {
+        margin: 0.75rem 0 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-layout">
+      <img class="header-logo" src="/logo.png" alt="Boston Beer Marathon logo" />
+
+      <div>
+        <div class="masthead">
+          <h1>The Waterfront Course</h1>
+          <div class="tagline">Harbor views, brewery stops, same questionable pacing.</div>
+        </div>
+
+        <nav>
+          <a href="/">Home</a>
+          <a href="/courses/original.html">Original Course</a>
+        </nav>
+
+        <section class="intro">
+          <p>
+            A blue-side spin through Boston's waterfront bars and breweries.
+            This route trades the original crawl across town for harbor air,
+            stadium energy, and a finish at Trillium.
+          </p>
+          <p>
+            Start at Sam Adams, keep the water close, and pretend the sea breeze
+            counts as recovery.
+          </p>
+        </section>
+      </div>
+    </div>
+  </header>
+
+  <main class="route-board" aria-label="Waterfront Boston Beer Marathon course">
+    <div class="route-scroll">
+      <section class="route-grid">
+        <div class="route-line" aria-hidden="true">
+          <svg viewBox="0 0 1656 180" preserveAspectRatio="none">
+            <path d="M20 80 C42 80 62 80 82 80 C142 80 162 138 222 138 C282 138 312 80 372 80 C432 80 468 138 522 138 C576 138 608 80 662 80 C716 80 758 138 812 138 C866 138 908 80 952 80 C996 80 1058 138 1102 138 C1146 138 1204 80 1242 80 C1280 80 1360 138 1392 138 C1424 138 1488 80 1532 80 C1572 80 1612 80 1636 80" />
+          </svg>
+        </div>
+
+        <article class="stop above" style="--x: 10px; --y: 28px; --marker-top: 375px;">
+          <span class="stop-marker">1</span>
+          <div class="copy">
+            <span class="stop-number">Stop 1</span>
+            <h2>Sam Adams</h2>
+            <p>The opening pour. Brewery confidence is high and everyone still believes in logistics.</p>
+          </div>
+          <img src="/images/Sam-Adams.png" alt="Sam Adams" />
+        </article>
+
+        <article class="stop below" style="--x: 150px; --y: 492px; --marker-top: 433px;">
+          <span class="stop-marker">2</span>
+          <img src="/images/Bleacher-Bar.png" alt="Bleacher Bar" />
+          <div class="copy">
+            <span class="stop-number">Stop 2</span>
+            <h2>Bleacher Bar</h2>
+            <p>The Fenway-adjacent checkpoint. Baseball atmosphere, beer, and just enough crowd noise.</p>
+          </div>
+        </article>
+
+        <article class="stop above" style="--x: 300px; --y: 36px; --marker-top: 375px;">
+          <span class="stop-marker">3</span>
+          <div class="copy">
+            <span class="stop-number">Stop 3</span>
+            <h2>Night Shift Esplanade</h2>
+            <p>A river-side reset before the course starts feeling like a real commitment.</p>
+          </div>
+          <img src="/images/Night-Shift.png" alt="Night Shift Esplanade" />
+        </article>
+
+        <article class="stop below" style="--x: 450px; --y: 492px; --marker-top: 433px;">
+          <span class="stop-marker">4</span>
+          <img src="/images/Pier6.png" alt="Pier 6" />
+          <div class="copy">
+            <span class="stop-number">Stop 4</span>
+            <h2>Pier 6</h2>
+            <p>Harbor views do excellent work distracting from the miles between stops.</p>
+          </div>
+        </article>
+
+        <article class="stop above" style="--x: 590px; --y: 20px; --marker-top: 375px;">
+          <span class="stop-marker">5</span>
+          <div class="copy">
+            <span class="stop-number">Stop 5</span>
+            <h2>Union Oyster House</h2>
+            <p>Historic Boston energy, seafood temptation, and a reminder that pacing includes snacks.</p>
+          </div>
+          <img src="/images/Union-Oyster-House.png" alt="Union Oyster House" />
+        </article>
+
+        <article class="stop below" style="--x: 740px; --y: 492px; --marker-top: 433px;">
+          <span class="stop-marker">6</span>
+          <img src="/images/Lord-Hobo.png" alt="Lord Hobo" />
+          <div class="copy">
+            <span class="stop-number">Stop 6</span>
+            <h2>Lord Hobo</h2>
+            <p>The mid-course beer decision that sounds sensible until the next leg starts.</p>
+          </div>
+        </article>
+
+        <article class="stop above" style="--x: 880px; --y: 34px; --marker-top: 375px;">
+          <span class="stop-marker">7</span>
+          <div class="copy">
+            <span class="stop-number">Stop 7</span>
+            <h2>L Street</h2>
+            <p>South Boston grit, blue-course spirit, and the part where enthusiasm gets negotiated.</p>
+          </div>
+          <img src="/images/L-Street.png" alt="L Street" />
+        </article>
+
+        <article class="stop below" style="--x: 1030px; --y: 492px; --marker-top: 433px;">
+          <span class="stop-marker">8</span>
+          <img src="/images/BBQ-Smoke-Shop.png" alt="BBQ Smoke Shop" />
+          <div class="copy">
+            <span class="stop-number">Stop 8</span>
+            <h2>BBQ Smoke Shop</h2>
+            <p>Food becomes strategy here. The smoked-meat detour is practically medical advice.</p>
+          </div>
+        </article>
+
+        <article class="stop above" style="--x: 1170px; --y: 32px; --marker-top: 375px;">
+          <span class="stop-marker">9</span>
+          <div class="copy">
+            <span class="stop-number">Stop 9</span>
+            <h2>Rock Bottom</h2>
+            <p>A late-course name that feels like a warning and somehow still works as motivation.</p>
+          </div>
+          <img src="/images/Rock-Bottom.png" alt="Rock Bottom" />
+        </article>
+
+        <article class="stop below" style="--x: 1320px; --y: 492px; --marker-top: 433px;">
+          <span class="stop-marker">10</span>
+          <img src="/images/Ward8.png" alt="Ward 8" />
+          <div class="copy">
+            <span class="stop-number">Stop 10</span>
+            <h2>Ward 8</h2>
+            <p>The last true checkpoint. Feet are filing complaints, but the finish is finally nearby.</p>
+          </div>
+        </article>
+
+        <article class="stop above" style="--x: 1460px; --y: 24px; --marker-top: 375px;">
+          <span class="stop-marker finish-marker">Finish</span>
+          <div class="copy">
+            <span class="stop-number">Finish</span>
+            <h2>Trillium</h2>
+            <p>The waterfront finish line. Relief, celebration, and maybe one more beer in the blue.</p>
+          </div>
+          <img src="/images/TrilliumBlue.png" alt="Trillium" />
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <section class="course-note">
+    <h2>Waterfront Course</h2>
+    <p>
+      Eleven stops from Sam Adams to Trillium, with the waterfront-blue look
+      pulled through the page to match the new course art.
+    </p>
+  </section>
+
+  <footer>
+    Not affiliated with the Boston Athletic Association or any participating
+    bars. Participate at your own risk.
+  </footer>
+</body>
+</html>
