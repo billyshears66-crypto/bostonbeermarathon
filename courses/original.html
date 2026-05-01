@@ -270,10 +270,17 @@
     }
 
     .shirt-link {
-      max-width: 760px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+      align-items: center;
+      gap: clamp(1.4rem, 4vw, 2.5rem);
+      max-width: 900px;
       margin: 3rem auto 4rem;
-      padding: 0 1rem;
-      text-align: center;
+      padding: clamp(1.25rem, 4vw, 2rem);
+      border: 1px solid rgba(255, 246, 220, 0.24);
+      border-radius: 8px;
+      background: rgba(4, 45, 29, 0.38);
+      text-align: left;
     }
 
     .shirt-link h2 {
@@ -282,10 +289,16 @@
     }
 
     .shirt-link p {
-      margin: 0 auto;
+      margin: 0;
       max-width: 36rem;
       color: var(--tan);
       line-height: 1.55;
+    }
+
+    .shirt-preview {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 18px 28px rgba(0, 0, 0, 0.28);
     }
 
     .button {
@@ -422,6 +435,17 @@
       .stop.above .copy,
       .stop.below .copy {
         margin: 0.75rem 0 0;
+      }
+
+      .shirt-link {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .shirt-preview {
+        max-width: 300px;
+        margin: 0 auto;
+        order: -1;
       }
     }
   </style>
@@ -580,4 +604,21 @@
   </main>
 
   <section class="shirt-link">
-    <h2>Original C
+    <div>
+      <h2>Original Course Shirt</h2>
+      <p>
+        The classic Boston Beer Marathon tee, for the route where bad decisions were born.
+      </p>
+      <a class="button" href="https://www.zazzle.com/boston_beer_marathon_t_shirt-256116380240475196?utm_id=97758_v0_s00_e230_tv4_tp1_a1dennhb80nexv&amp;fbclid=IwY2xjawRh5eZleHRuA2FlbQIxMABicmlkETFHVFdaVFdzb0JGVDZiSTBTc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHm-8mWtnhoZNYJ1SivK0lreP2E-mjTi5QDdGsS5mk0k_FWIfCUWefR5-E73j_aem_VQ2MWGVQhmn4e96zFzrwLQ" target="_blank" rel="noopener">
+        Order the Original Shirt
+      </a>
+    </div>
+    <img class="shirt-preview" src="/images/Original-shirt.jpg" alt="Original Course t-shirt" />
+  </section>
+
+  <footer>
+    Not affiliated with the Boston Athletic Association or any participating
+    bars. Participate at your own risk.
+  </footer>
+</body>
+</html>

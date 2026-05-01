@@ -82,6 +82,18 @@
       text-shadow: 0 4px 18px rgba(0, 0, 0, 0.26);
     }
 
+    .waterfront-title {
+      display: inline-block;
+    }
+
+    .waterfront-title span {
+      display: block;
+    }
+
+    .waterfront-title .course-line {
+      text-align: center;
+    }
+
     .tagline {
       font-size: clamp(1rem, 2vw, 1.25rem);
       margin-top: 0.55rem;
@@ -271,10 +283,17 @@
     }
 
     .course-note {
-      max-width: 760px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+      align-items: center;
+      gap: clamp(1.4rem, 4vw, 2.5rem);
+      max-width: 900px;
       margin: 3rem auto 4rem;
-      padding: 0 1rem;
-      text-align: center;
+      padding: clamp(1.25rem, 4vw, 2rem);
+      border: 1px solid rgba(255, 246, 220, 0.24);
+      border-radius: 8px;
+      background: rgba(0, 58, 131, 0.34);
+      text-align: left;
     }
 
     .course-note h2 {
@@ -283,10 +302,35 @@
     }
 
     .course-note p {
-      margin: 0 auto;
+      margin: 0;
       max-width: 36rem;
       color: var(--tan);
       line-height: 1.55;
+    }
+
+    .shirt-preview {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 18px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .shirt-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      margin-top: 1.35rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--cream);
+      color: var(--blue-deep);
+      border-radius: 999px;
+      font-weight: 950;
+      text-decoration: none;
+      box-shadow: 0 14px 24px rgba(0, 0, 0, 0.24);
+    }
+
+    .shirt-button:hover {
+      background: var(--tan);
     }
 
     footer {
@@ -412,6 +456,17 @@
       .stop.below .copy {
         margin: 0.75rem 0 0;
       }
+
+      .course-note {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .shirt-preview {
+        max-width: 300px;
+        margin: 0 auto;
+        order: -1;
+      }
     }
   </style>
 </head>
@@ -423,8 +478,11 @@
 
       <div>
         <div class="masthead">
-          <h1>The Waterfront Course</h1>
-          <div class="tagline">Harbor views, brewery stops, same questionable pacing.</div>
+          <h1 class="waterfront-title">
+            <span>The Waterfront</span>
+            <span class="course-line">Course</span>
+          </h1>
+          <div class="tagline">A terrible idea since day one.</div>
         </div>
 
         <nav>
@@ -570,11 +628,16 @@
   </main>
 
   <section class="course-note">
-    <h2>Waterfront Course</h2>
-    <p>
-      Eleven stops from Sam Adams to Trillium, with the waterfront-blue look
-      pulled through the page to match the new course art.
-    </p>
+    <div>
+      <h2>Waterfront Course Shirt</h2>
+      <p>
+        Commemorate eleven questionable stops with the official Waterfront Course tee.
+      </p>
+      <a class="shirt-button" href="https://www.zazzle.com/boston_beer_marathon_the_waterfront_course_t_shi_t_shirt-256513500887493843?utm_id=97757_v0_s00_e230_tv2_tp1_a1dennhb80nexv&amp;fbclid=IwY2xjawRh5FdleHRuA2FlbQIxMQBzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeJAjR6sj41JW5WUgWpPjWZIYZyE_Gr-hHA6lZONl8Xd0nHkWBKQMuM8DF6Mo_aem_MQsFqLAPDhZY18PbVVlC5Q" target="_blank" rel="noopener">
+        Order the Waterfront Shirt
+      </a>
+    </div>
+    <img class="shirt-preview" src="../images/Waterfront-shirt.jpg" alt="Waterfront Course t-shirt" />
   </section>
 
   <footer>
