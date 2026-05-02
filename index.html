@@ -58,55 +58,44 @@
     }
 
     .hero {
-      min-height: 92vh;
-      padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem) 0;
+      min-height: 76vh;
+      padding: clamp(1.25rem, 3vw, 2.4rem) clamp(1rem, 4vw, 3rem) 0;
     }
 
     .hero-inner {
-      width: min(1180px, 100%);
+      width: min(960px, 100%);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+      grid-template-columns: minmax(260px, 0.85fr) minmax(280px, 0.75fr);
       align-items: center;
-      gap: clamp(2rem, 6vw, 5rem);
-      padding: clamp(1.5rem, 5vh, 3.5rem) 0 3rem;
+      gap: clamp(1.5rem, 5vw, 3.5rem);
+      padding: clamp(0.75rem, 3vh, 2rem) 0 3rem;
     }
 
     .logo-lockup {
-      width: min(1180px, 100%);
+      width: min(1370px, 100%);
       display: block;
-      margin: 0 auto clamp(1.75rem, 4vw, 3rem);
+      margin: 0 auto clamp(0.75rem, 2vw, 1.5rem);
       filter: drop-shadow(0 24px 22px rgba(0, 0, 0, 0.26));
     }
 
-    h1 {
-      margin: 1.2rem 0 0;
-      font-size: clamp(3rem, 7vw, 6.6rem);
-      line-height: 0.9;
-      letter-spacing: 0;
-      text-wrap: balance;
+    .hero-copy {
+      text-align: center;
     }
 
     .tagline {
-      margin: 1.2rem 0 0;
+      margin: 0;
       color: var(--tan);
-      font-size: clamp(1.15rem, 2vw, 1.55rem);
+      font-size: clamp(1.55rem, 3vw, 2.35rem);
       font-weight: 850;
-    }
-
-    .intro {
-      margin: 1.2rem 0 0;
-      max-width: 37rem;
-      color: var(--cream);
-      font-size: 1.05rem;
-      line-height: 1.65;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 0.75rem;
-      margin-top: 1.6rem;
+      margin-top: 1.15rem;
     }
 
     .button {
@@ -137,14 +126,14 @@
 
     .course-preview {
       position: relative;
-      min-height: 520px;
+      min-height: 330px;
       isolation: isolate;
     }
 
     .course-preview::before {
       content: "";
       position: absolute;
-      inset: 6% 3% 8%;
+      inset: 5% 4% 7%;
       z-index: -1;
       border: 1px solid rgba(255, 246, 220, 0.14);
       border-radius: 8px;
@@ -153,10 +142,10 @@
 
     .preview-route {
       position: absolute;
-      left: 7%;
-      right: 7%;
+      left: 8%;
+      right: 8%;
       top: 36%;
-      height: 120px;
+      height: 82px;
       pointer-events: none;
     }
 
@@ -171,7 +160,7 @@
 
     .preview-stop {
       position: absolute;
-      width: min(34%, 220px);
+      width: min(34%, 150px);
       object-fit: contain;
       filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.32));
     }
@@ -184,13 +173,13 @@
     .preview-stop.two {
       right: 3%;
       top: 0;
-      width: min(31%, 205px);
+      width: min(31%, 138px);
     }
 
     .preview-stop.three {
       left: 32%;
       bottom: 0;
-      width: min(38%, 250px);
+      width: min(38%, 170px);
     }
 
     .marker {
@@ -228,9 +217,12 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
       background: rgba(255, 246, 220, 0.18);
-      border-top: 1px solid rgba(255, 246, 220, 0.18);
-      border-bottom: 1px solid rgba(255, 246, 220, 0.18);
+      border: 1px solid rgba(255, 246, 220, 0.18);
+      border-radius: 8px;
+      overflow: hidden;
     }
 
     .rule {
@@ -383,10 +375,11 @@
 
       .hero-inner {
         grid-template-columns: 1fr;
+        width: min(520px, 100%);
       }
 
       .course-preview {
-        min-height: 360px;
+        min-height: 300px;
       }
 
       .quick-rules,
@@ -410,7 +403,7 @@
       }
 
       .course-preview {
-        min-height: 310px;
+        min-height: 260px;
       }
 
       .preview-stop {
@@ -431,16 +424,11 @@
 <body>
   <div class="page">
     <section class="hero">
-      <img class="logo-lockup" src="BBM-Logo-wide2.png" alt="Boston Beer Marathon logo" />
+      <img class="logo-lockup" src="BBM-Logo-wide3.png" alt="Boston Beer Marathon logo" />
 
       <div class="hero-inner">
-        <div>
-          <h1>Boston Beer Marathon</h1>
+        <div class="hero-copy">
           <p class="tagline">Drink. Run. Repeat.</p>
-          <p class="intro">
-            A self-organized, non-sanctioned running route through Boston bars.
-            Part running tour, part bar crawl, entirely optional.
-          </p>
 
           <div class="hero-actions">
             <a class="button primary" href="/courses/original.html">See the Original Course</a>
@@ -484,7 +472,8 @@
         <h2>How It Works</h2>
         <p>
           Pick a course. Run between stops. Have a beer or do not. Eat when
-          needed. Hydrate when you remember.
+          needed. Hydrate when you remember. Shirts exist if you want the
+          questionable decision documented.
         </p>
       </div>
     </section>
