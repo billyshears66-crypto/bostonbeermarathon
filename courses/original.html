@@ -257,7 +257,7 @@
 
     .shirt-link {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
       align-items: center;
       gap: clamp(1.4rem, 4vw, 2.5rem);
       max-width: 900px;
@@ -281,10 +281,27 @@
       line-height: 1.55;
     }
 
+    .shirt-previews {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1rem;
+    }
+
     .shirt-preview {
-      width: 100%;
+      width: min(58%, 210px);
       border-radius: 8px;
       box-shadow: 0 18px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .shirt-preview.front {
+      position: relative;
+      z-index: 2;
+      transform: translate(0.75rem, -1.75rem);
+    }
+
+    .shirt-preview.back {
+      transform: translateX(-1.15rem);
     }
 
     .button {
@@ -428,7 +445,7 @@
         text-align: center;
       }
 
-      .shirt-preview {
+      .shirt-previews {
         max-width: 300px;
         margin: 0 auto;
         order: -1;
@@ -599,7 +616,10 @@
         Order the Original Shirt
       </a>
     </div>
-    <img class="shirt-preview" src="../images/Original-shirt.jpg" alt="Original Course t-shirt" />
+    <div class="shirt-previews">
+      <img class="shirt-preview front" src="../images/Original-shirt-front.jpg" alt="Original Course t-shirt front" />
+      <img class="shirt-preview back" src="../images/Original-shirt.jpg" alt="Original Course t-shirt back" />
+    </div>
   </section>
 
   <footer>
