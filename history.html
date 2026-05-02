@@ -150,6 +150,7 @@
       border: 1px solid rgba(255, 246, 220, 0.2);
       border-radius: 8px;
       overflow: hidden;
+      margin-top: clamp(7rem, 12vw, 10rem);
       background:
         linear-gradient(180deg, rgba(7, 63, 37, 0.18), rgba(4, 45, 29, 0.7)),
         rgba(4, 45, 29, 0.55);
@@ -164,6 +165,10 @@
       text-align: center;
       color: var(--tan);
       border-bottom: 1px solid rgba(255, 246, 220, 0.2);
+    }
+
+    .photo-placeholder[hidden] {
+      display: none;
     }
 
     .photo-placeholder strong {
@@ -184,10 +189,10 @@
 
     figcaption {
       margin: 0;
-      padding: 0.9rem 1rem 1rem;
+      padding: 0.45rem 0.8rem 0.5rem;
       color: var(--tan);
-      font-size: 0.92rem;
-      line-height: 1.45;
+      font-size: 0.8rem;
+      line-height: 1.25;
       text-align: center;
     }
 
@@ -233,6 +238,7 @@
 
       .photo-frame {
         order: -1;
+        margin-top: 0;
       }
     }
   </style>
@@ -245,7 +251,7 @@
 
       <div>
         <h1>How It Started</h1>
-        <p class="tagline">One video, one bad idea, one very long night.</p>
+        <p class="tagline">One video, one bad idea, one very long day.</p>
         <nav>
           <a class="button primary" href="index.html">Home</a>
           <a class="button" href="courses/original.html">Original Course</a>
@@ -271,9 +277,10 @@
         </p>
         <p>
           Somewhere along the way, survival became part of the strategy. We made
-          an on-the-fly stop at BBQ Smoke Shop because we were starving, and we
-          hit Dunkin' for emergency bagels and fuel. Good thing there is one on
-          every corner.
+          an emergency stop at Dunkin' for some fuel in the form of bagels. Good
+          thing there is one on every corner. That was not enough, so we made
+          another pit stop at BBQ Smoke Shop for some of the best BBQ we have
+          ever had.
         </p>
         <p>
           By the time we reached Trillium, there was no food plan, no ceremony,
@@ -284,11 +291,11 @@
       </article>
 
       <figure class="photo-frame">
-        <img class="history-photo" src="images/first-finish-trillium.jpg" alt="Sean and Billy at the first Trillium finish" onload="this.nextElementSibling.hidden = true" onerror="this.remove()" />
-        <div class="photo-placeholder">
+        <img class="history-photo" src="images/first-finish-trillium.jpg" alt="Sean and Chris at the first Trillium finish" onerror="this.nextElementSibling.hidden = false; this.remove()" />
+        <div class="photo-placeholder" hidden>
           <div>
             <strong>The first finish at Trillium</strong>
-            Sean and Billy, sweaty and smiling after the Original Course.
+            Sean and Chris, sweaty and smiling after the Original Course.
           </div>
         </div>
         <figcaption>
