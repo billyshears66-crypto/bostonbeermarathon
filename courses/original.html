@@ -13,7 +13,7 @@
       --tan: #ead7a2;
       --gold: #f3c760;
       --ink: #102015;
-      --route-width: 1220px;
+      --route-width: 1700px;
     }
 
     * {
@@ -133,38 +133,24 @@
     .route-board {
       margin: 2rem 0 4rem;
       padding-bottom: 2rem;
-      overflow-x: auto;
+      overflow-x: hidden;
       overflow-y: hidden;
-      scrollbar-color: var(--tan) rgba(255, 255, 255, 0.08);
-      scrollbar-width: thin;
-    }
-
-    .route-board::-webkit-scrollbar {
-      height: 12px;
-    }
-
-    .route-board::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .route-board::-webkit-scrollbar-thumb {
-      background: var(--tan);
-      border-radius: 999px;
     }
 
     .route-scroll {
-      width: min(var(--route-width), calc(100vw - 2rem));
+      width: min(var(--route-width), calc(100vw - 1rem));
       min-height: 820px;
       position: relative;
       margin: 0 auto;
-      padding: 3rem 1.5rem 4.5rem;
+      padding: 3rem 0.5rem 4.5rem;
     }
 
     .route-line {
       position: absolute;
-      left: 0;
+      left: 0.5rem;
+      right: 0.5rem;
       top: 315px;
-      width: 1120px;
+      width: auto;
       height: 180px;
       pointer-events: none;
       overflow: visible;
@@ -182,7 +168,7 @@
     .route-grid {
       position: relative;
       height: 720px;
-      min-width: 1120px;
+      min-width: 0;
     }
 
     .stop {
@@ -191,7 +177,7 @@
       position: absolute;
       left: var(--x);
       top: var(--y);
-      width: 160px;
+      width: clamp(118px, 11.5vw, 170px);
       text-align: left;
     }
 
@@ -331,7 +317,7 @@
       padding: 1.25rem 1rem 3rem;
     }
 
-    @media (max-width: 1180px) {
+    @media (max-width: 900px) {
       header {
         padding-top: 1.25rem;
       }
@@ -454,7 +440,7 @@
 <body>
   <header>
     <div class="header-layout">
-      <img class="header-logo" src="/logo.png" alt="Boston Beer Marathon logo" />
+      <img class="header-logo" src="../logo.png" alt="Boston Beer Marathon logo" />
 
       <div>
         <div class="masthead">
@@ -490,19 +476,19 @@
           </svg>
         </div>
 
-        <article class="stop above" style="--x: 10px; --y: 28px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 0.9%; --y: 28px; --marker-top: 375px;">
           <span class="stop-marker">1</span>
           <div class="copy">
             <span class="stop-number">Stop 1</span>
             <h2>J.J. Donovan's</h2>
             <p>The starting line. Optimism is high. Hydration choices are already questionable.</p>
           </div>
-          <img src="/images/jj-donovans.png" alt="J.J. Donovan's" />
+          <img src="../images/jj-donovans.png" alt="J.J. Donovan's" />
         </article>
 
-        <article class="stop below" style="--x: 105px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 9.4%; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">2</span>
-          <img src="/images/cheers.png" alt="Cheers" />
+          <img src="../images/cheers.png" alt="Cheers" />
           <div class="copy">
             <span class="stop-number">Stop 2</span>
             <h2>Cheers</h2>
@@ -510,19 +496,19 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 200px; --y: 36px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 17.9%; --y: 36px; --marker-top: 375px;">
           <span class="stop-marker">3</span>
           <div class="copy">
             <span class="stop-number">Stop 3</span>
             <h2>Cask 'n Flagon</h2>
             <p>The Fenway checkpoint. Bonus points if there's a game and the city tries to trap you.</p>
           </div>
-          <img src="/images/cask-n-flagon.png" alt="Cask 'n Flagon" />
+          <img src="../images/cask-n-flagon.png" alt="Cask 'n Flagon" />
         </article>
 
-        <article class="stop below" style="--x: 295px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 26.3%; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">4</span>
-          <img src="/images/the-sevens.png" alt="The Sevens" />
+          <img src="../images/the-sevens.png" alt="The Sevens" />
           <div class="copy">
             <span class="stop-number">Stop 4</span>
             <h2>The Sevens</h2>
@@ -530,19 +516,19 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 390px; --y: 20px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 34.8%; --y: 20px; --marker-top: 375px;">
           <span class="stop-marker">5</span>
           <div class="copy">
             <span class="stop-number">Stop 5</span>
             <h2>The Bell in Hand</h2>
             <p>Old, historic, and somehow still willing to let people like us through the door.</p>
           </div>
-          <img src="/images/bell-in-hand.png" alt="The Bell in Hand" />
+          <img src="../images/bell-in-hand.png" alt="The Bell in Hand" />
         </article>
 
-        <article class="stop below" style="--x: 485px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 43.3%; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">6</span>
-          <img src="/images/warren-tavern.png" alt="Warren Tavern" />
+          <img src="../images/warren-tavern.png" alt="Warren Tavern" />
           <div class="copy">
             <span class="stop-number">Stop 6</span>
             <h2>Warren Tavern</h2>
@@ -550,19 +536,19 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 580px; --y: 34px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 51.8%; --y: 34px; --marker-top: 375px;">
           <span class="stop-marker">7</span>
           <div class="copy">
             <span class="stop-number">Stop 7</span>
             <h2>J.J. Foley's</h2>
             <p>The mood-check stop. Every course needs one place that tests the spirit.</p>
           </div>
-          <img src="/images/jj-foleys.png" alt="J.J. Foley's" />
+          <img src="../images/jj-foleys.png" alt="J.J. Foley's" />
         </article>
 
-        <article class="stop below" style="--x: 675px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 60.3%; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">8</span>
-          <img src="/images/harpoon.png" alt="Harpoon" />
+          <img src="../images/harpoon.png" alt="Harpoon" />
           <div class="copy">
             <span class="stop-number">Stop 8</span>
             <h2>Harpoon</h2>
@@ -570,19 +556,19 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 770px; --y: 32px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 68.8%; --y: 32px; --marker-top: 375px;">
           <span class="stop-marker">9</span>
           <div class="copy">
             <span class="stop-number">Stop 9</span>
             <h2>Biddy Early's</h2>
             <p>If you make it here, strangers may start recognizing your poor decisions in public.</p>
           </div>
-          <img src="/images/biddy-earlys.png" alt="Biddy Early's" />
+          <img src="../images/biddy-earlys.png" alt="Biddy Early's" />
         </article>
 
-        <article class="stop below" style="--x: 865px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 77.2%; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">10</span>
-          <img src="/images/sullivans-tap.png" alt="Sullivan's Tap" />
+          <img src="../images/sullivans-tap.png" alt="Sullivan's Tap" />
           <div class="copy">
             <span class="stop-number">Stop 10</span>
             <h2>Sullivan's Tap</h2>
@@ -590,14 +576,14 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 960px; --y: 24px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 85.7%; --y: 24px; --marker-top: 375px;">
           <span class="stop-marker finish-marker">Finish</span>
           <div class="copy">
             <span class="stop-number">Finish</span>
             <h2>Trillium</h2>
             <p>The finish line. Redemption, relief, and maybe one more beer because apparently lessons were not learned.</p>
           </div>
-          <img src="/images/trillium.png" alt="Trillium" />
+          <img src="../images/trillium.png" alt="Trillium" />
         </article>
       </section>
     </div>
@@ -613,7 +599,7 @@
         Order the Original Shirt
       </a>
     </div>
-    <img class="shirt-preview" src="/images/Original-shirt.jpg" alt="Original Course t-shirt" />
+    <img class="shirt-preview" src="../images/Original-shirt.jpg" alt="Original Course t-shirt" />
   </section>
 
   <footer>

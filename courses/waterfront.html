@@ -14,7 +14,7 @@
       --tan: #ead7a2;
       --gold: #f3c760;
       --ink: #102015;
-      --route-width: 1220px;
+      --route-width: 1700px;
     }
 
     * {
@@ -146,38 +146,24 @@
     .route-board {
       margin: 2rem 0 4rem;
       padding-bottom: 2rem;
-      overflow-x: auto;
+      overflow-x: hidden;
       overflow-y: hidden;
-      scrollbar-color: var(--tan) rgba(255, 255, 255, 0.08);
-      scrollbar-width: thin;
-    }
-
-    .route-board::-webkit-scrollbar {
-      height: 12px;
-    }
-
-    .route-board::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .route-board::-webkit-scrollbar-thumb {
-      background: var(--tan);
-      border-radius: 999px;
     }
 
     .route-scroll {
-      width: min(var(--route-width), calc(100vw - 2rem));
+      width: min(var(--route-width), calc(100vw - 1rem));
       min-height: 820px;
       position: relative;
       margin: 0 auto;
-      padding: 3rem 1.5rem 4.5rem;
+      padding: 3rem 0.5rem 4.5rem;
     }
 
     .route-line {
       position: absolute;
-      left: 0;
+      left: 0.5rem;
+      right: 0.5rem;
       top: 315px;
-      width: 1120px;
+      width: auto;
       height: 180px;
       pointer-events: none;
       overflow: visible;
@@ -195,7 +181,7 @@
     .route-grid {
       position: relative;
       height: 720px;
-      min-width: 1120px;
+      min-width: 0;
     }
 
     .stop {
@@ -204,7 +190,7 @@
       position: absolute;
       left: var(--x);
       top: var(--y);
-      width: 160px;
+      width: clamp(118px, 11.5vw, 170px);
       text-align: left;
     }
 
@@ -344,7 +330,7 @@
       padding: 1.25rem 1rem 3rem;
     }
 
-    @media (max-width: 1180px) {
+    @media (max-width: 900px) {
       header {
         padding-top: 1.25rem;
       }
@@ -514,7 +500,7 @@
           </svg>
         </div>
 
-        <article class="stop above" style="--x: 10px; --y: 28px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 0.9%; --y: 28px; --marker-top: 375px;">
           <span class="stop-marker">1</span>
           <div class="copy">
             <span class="stop-number">Stop 1</span>
@@ -524,7 +510,7 @@
           <img src="../images/Sam-Adams.png" alt="Sam Adams" />
         </article>
 
-        <article class="stop below" style="--x: 105px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 9.4%; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">2</span>
           <img src="../images/Bleacher-Bar.png" alt="Bleacher Bar" />
           <div class="copy">
@@ -534,7 +520,7 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 200px; --y: 36px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 17.9%; --y: 36px; --marker-top: 375px;">
           <span class="stop-marker">3</span>
           <div class="copy">
             <span class="stop-number">Stop 3</span>
@@ -544,7 +530,7 @@
           <img src="../images/Night-Shift.png" alt="Night Shift Esplanade" />
         </article>
 
-        <article class="stop below" style="--x: 295px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 26.3%; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">4</span>
           <img src="../images/Pier6.png" alt="Pier 6" />
           <div class="copy">
@@ -554,7 +540,7 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 390px; --y: 20px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 34.8%; --y: 20px; --marker-top: 375px;">
           <span class="stop-marker">5</span>
           <div class="copy">
             <span class="stop-number">Stop 5</span>
@@ -564,7 +550,7 @@
           <img src="../images/Union-Oyster-House.png" alt="Union Oyster House" />
         </article>
 
-        <article class="stop below" style="--x: 485px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 43.3%; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">6</span>
           <img src="../images/Lord-Hobo.png" alt="Lord Hobo" />
           <div class="copy">
@@ -574,7 +560,7 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 580px; --y: 34px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 51.8%; --y: 34px; --marker-top: 375px;">
           <span class="stop-marker">7</span>
           <div class="copy">
             <span class="stop-number">Stop 7</span>
@@ -584,7 +570,7 @@
           <img src="../images/L-Street.png" alt="L Street" />
         </article>
 
-        <article class="stop below" style="--x: 675px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 60.3%; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">8</span>
           <img src="../images/BBQ-Smoke-Shop.png" alt="BBQ Smoke Shop" />
           <div class="copy">
@@ -594,7 +580,7 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 770px; --y: 32px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 68.8%; --y: 32px; --marker-top: 375px;">
           <span class="stop-marker">9</span>
           <div class="copy">
             <span class="stop-number">Stop 9</span>
@@ -604,7 +590,7 @@
           <img src="../images/Rock-Bottom.png" alt="Rock Bottom" />
         </article>
 
-        <article class="stop below" style="--x: 865px; --y: 492px; --marker-top: 433px;">
+        <article class="stop below" style="--x: 77.2%; --y: 492px; --marker-top: 433px;">
           <span class="stop-marker">10</span>
           <img src="../images/Ward8.png" alt="Ward 8" />
           <div class="copy">
@@ -614,7 +600,7 @@
           </div>
         </article>
 
-        <article class="stop above" style="--x: 960px; --y: 24px; --marker-top: 375px;">
+        <article class="stop above" style="--x: 85.7%; --y: 24px; --marker-top: 375px;">
           <span class="stop-marker finish-marker">Finish</span>
           <div class="copy">
             <span class="stop-number">Finish</span>
