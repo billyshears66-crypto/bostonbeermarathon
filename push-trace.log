@@ -1,0 +1,25 @@
+09:21:28.118973 exec-cmd.c:266          trace: resolved executable dir: C:/Users/billy/AppData/Local/GitHubDesktop/app-3.5.8/resources/app/git/mingw64/bin
+09:21:28.127115 git.c:502               trace: built-in: git push origin main
+09:21:28.128121 run-command.c:674       trace: run_command: GIT_DIR=.git git remote-https origin https://github.com/billyshears66-crypto/bostonbeermarathon.git
+09:21:28.128121 run-command.c:935       trace: start_command: git remote-https origin https://github.com/billyshears66-crypto/bostonbeermarathon.git
+09:21:28.138619 exec-cmd.c:266          trace: resolved executable dir: C:/Users/billy/AppData/Local/GitHubDesktop/app-3.5.8/resources/app/git/mingw64/bin
+09:21:28.142759 git.c:809               trace: exec: git-remote-https origin https://github.com/billyshears66-crypto/bostonbeermarathon.git
+09:21:28.142759 run-command.c:674       trace: run_command: git-remote-https origin https://github.com/billyshears66-crypto/bostonbeermarathon.git
+09:21:28.142759 run-command.c:935       trace: start_command: git-remote-https origin https://github.com/billyshears66-crypto/bostonbeermarathon.git
+09:21:28.160285 exec-cmd.c:266          trace: resolved executable dir: C:/Users/billy/AppData/Local/GitHubDesktop/app-3.5.8/resources/app/git/mingw64/bin
+09:21:28.281403 run-command.c:674       trace: run_command: 'git credential-manager get'
+09:21:28.282407 run-command.c:935       trace: start_command: C:/Users/billy/AppData/Local/GitHubDesktop/app-3.5.8/resources/app/git/usr/bin/sh.exe -c 'git credential-manager get' 'git credential-manager get'
+09:21:28.358381 exec-cmd.c:266          trace: resolved executable dir: C:/Users/billy/AppData/Local/GitHubDesktop/app-3.5.8/resources/app/git/mingw64/bin
+09:21:28.362381 git.c:809               trace: exec: git-credential-manager get
+09:21:28.362381 run-command.c:674       trace: run_command: git-credential-manager get
+09:21:28.362381 run-command.c:935       trace: start_command: git-credential-manager get
+09:21:28.459085 exec-cmd.c:266          trace: resolved executable dir: C:/Users/billy/AppData/Local/GitHubDesktop/app-3.5.8/resources/app/git/mingw64/bin
+09:21:28.462106 git.c:502               trace: built-in: git config --null --list
+09:21:28.630639 exec-cmd.c:266          trace: resolved executable dir: C:/Users/billy/AppData/Local/GitHubDesktop/app-3.5.8/resources/app/git/mingw64/bin
+09:21:28.633646 git.c:502               trace: built-in: git version
+09:21:28.647274 exec-cmd.c:266          trace: resolved executable dir: C:/Users/billy/AppData/Local/GitHubDesktop/app-3.5.8/resources/app/git/mingw64/bin
+09:21:28.651446 git.c:502               trace: built-in: git config --null --type=path credential.https://github.com.gitHubHelper
+09:21:28.664034 exec-cmd.c:266          trace: resolved executable dir: C:/Users/billy/AppData/Local/GitHubDesktop/app-3.5.8/resources/app/git/mingw64/bin
+09:21:28.667102 git.c:502               trace: built-in: git config --null --type=path credential.github.com.gitHubHelper
+09:21:28.679725 exec-cmd.c:266          trace: resolved executable dir: C:/Users/billy/AppData/Local/GitHubDesktop/app-3.5.8/resources/app/git/mingw64/bin
+09:21:28.683156 git.c:502               trace: built-in: git config --null --type=path credential.gitHubHelper
