@@ -336,7 +336,7 @@
 
     @media (max-width: 900px) {
       header {
-        padding-top: 1.25rem;
+        padding: 1rem 0.75rem 0.55rem;
       }
 
       .header-layout {
@@ -345,7 +345,7 @@
       }
 
       .header-logo {
-        width: min(62vw, 210px);
+        width: min(58vw, 180px);
         margin-bottom: 0.85rem;
       }
 
@@ -353,10 +353,15 @@
         text-align: center;
       }
 
+      h1 {
+        font-size: clamp(2.25rem, 10vw, 4rem);
+      }
+
       nav {
         flex-wrap: wrap;
         justify-content: center;
         margin-inline: auto;
+        gap: 0.55rem;
       }
 
       nav::before,
@@ -377,12 +382,13 @@
         text-align: center;
         margin-inline: auto;
         padding: 0 1rem;
+        font-size: 0.98rem;
       }
 
       .route-scroll {
         width: 100%;
         min-height: 0;
-        padding: 1.25rem 1rem 2rem;
+        padding: 1.25rem 0.75rem 2rem;
       }
 
       .route-line {
@@ -443,12 +449,61 @@
       .shirt-link {
         grid-template-columns: 1fr;
         text-align: center;
+        width: min(calc(100% - 1rem), 900px);
+        padding: 1rem;
       }
 
       .shirt-previews {
         max-width: 300px;
         margin: 0 auto;
         order: -1;
+      }
+
+      .button {
+        width: min(100%, 310px);
+      }
+    }
+
+    @media (max-width: 430px) {
+      .header-logo {
+        width: min(56vw, 155px);
+      }
+
+      h1 {
+        font-size: clamp(2rem, 10vw, 3rem);
+      }
+
+      .tagline,
+      .intro,
+      .stop p,
+      .shirt-link p {
+        font-size: 0.95rem;
+        line-height: 1.48;
+      }
+
+      .route-line {
+        left: 24px;
+      }
+
+      .stop,
+      .stop.above,
+      .stop.below {
+        width: min(100%, 360px);
+        padding-left: 3.55rem;
+        margin-bottom: 2.35rem;
+      }
+
+      .stop-marker,
+      .stop:nth-of-type(even) .stop-marker {
+        left: 5px;
+      }
+
+      .stop img {
+        width: min(100%, 230px);
+      }
+
+      .shirt-preview {
+        width: min(58%, 185px);
       }
     }
   </style>

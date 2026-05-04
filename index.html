@@ -371,11 +371,14 @@
     @media (max-width: 860px) {
       .hero {
         min-height: 0;
+        padding-top: 1rem;
       }
 
       .hero-inner {
         grid-template-columns: 1fr;
         width: min(520px, 100%);
+        gap: 1.2rem;
+        padding-bottom: 2rem;
       }
 
       .course-preview {
@@ -399,7 +402,26 @@
 
     @media (max-width: 560px) {
       .hero {
-        padding-inline: 1rem;
+        padding-inline: 0.75rem;
+      }
+
+      .logo-lockup {
+        width: min(100%, 720px);
+        margin-bottom: 0.65rem;
+      }
+
+      .tagline {
+        font-size: 1.35rem;
+      }
+
+      .hero-actions {
+        gap: 0.55rem;
+      }
+
+      .button {
+        width: min(100%, 320px);
+        min-height: 42px;
+        padding: 0.75rem 1rem;
       }
 
       .course-preview {
@@ -415,7 +437,21 @@
       }
 
       .course-card img {
-        width: 58%;
+        width: 64%;
+        max-height: 170px;
+      }
+
+      .courses {
+        width: min(calc(100% - 1rem), 1180px);
+        padding-top: 2.5rem;
+      }
+
+      .section-heading h2 {
+        font-size: 2.3rem;
+      }
+
+      .history-callout {
+        padding: 1rem;
       }
     }
   </style>
