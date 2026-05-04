@@ -431,6 +431,8 @@
       .stop.above,
       .stop.below {
         position: relative;
+        display: flex;
+        flex-direction: column;
         left: auto;
         top: auto;
         width: min(100%, 440px);
@@ -457,13 +459,15 @@
       }
 
       .stop img {
+        order: 2;
         width: min(100%, 260px);
         max-height: 160px;
       }
 
       .stop.above .copy,
       .stop.below .copy {
-        margin: 0.75rem 0 0;
+        order: 1;
+        margin: 0 0 0.75rem;
       }
 
       .course-note {
