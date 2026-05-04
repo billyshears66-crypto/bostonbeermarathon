@@ -146,6 +146,29 @@
       text-transform: uppercase;
     }
 
+    .inspiration-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.15rem 0 0.35rem;
+      min-height: 42px;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(243, 199, 96, 0.55);
+      border-radius: 999px;
+      color: var(--green-deep);
+      background: var(--gold);
+      font-weight: 950;
+      line-height: 1.15;
+      text-decoration: none;
+      box-shadow: 0 14px 24px rgba(0, 0, 0, 0.16);
+    }
+
+    .inspiration-link:hover {
+      background: var(--cream);
+      border-color: var(--cream);
+      color: var(--green);
+    }
+
     .photo-frame {
       border: 1px solid rgba(255, 246, 220, 0.2);
       border-radius: 8px;
@@ -284,6 +307,13 @@
         line-height: 1.58;
       }
 
+      .inspiration-link {
+        display: flex;
+        width: 100%;
+        border-radius: 8px;
+        text-align: center;
+      }
+
       .history-photo {
         aspect-ratio: 4 / 5.1;
       }
@@ -313,6 +343,11 @@
           A while back, someone sent me a ridiculous video of guys running through
           Sydney and drinking at stops along the way. I immediately sent it to
           Sean and said, "We have to do this in Boston."
+        </p>
+        <p>
+          <a class="inspiration-link" href="https://www.youtube.com/watch?v=QtVVDfjq4GQ&t=78s" target="_blank" rel="noopener">
+            Watch the video that started it
+          </a>
         </p>
         <p>
           So we did.
